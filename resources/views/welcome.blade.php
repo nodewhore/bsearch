@@ -1,4 +1,5 @@
 @extends('template')
+@section('title','Добро пожаловать')
 @section('content')
     <div class="welcome">
         <p style="visibility:hidden;">1</p>

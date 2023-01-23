@@ -1,5 +1,5 @@
 @extends('template')
-
+@section('title','Авторизация')
 @section('content')
     <div class="container nav">
         <div class="logo">
@@ -14,12 +14,13 @@
         </div>
         <div class="search">
             <form action="#" method="GET" class="search-form">
+                @csrf
                 <input type="search" name="s" id="search-input" class="search-control" placeholder="Поиск...">
                 <button type="submit" class="btn btn-search"><i class="bi bi-search"></i></button>
             </form>
         </div>
         <div class="auth">
-            <a href="" class="nav__link"> <i class="bi bi-person-circle"></i></a>
+            <button class="nav__link" type="button" data-bs-toggle="modal" data-bs-target="#modalUser"> <i class="bi bi-person-circle"></i></button>
         </div>
     </div>
     <!-- navbar -->
