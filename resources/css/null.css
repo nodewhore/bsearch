@@ -1,0 +1,25 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: var(--currentBlack);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 200!important;
+    overflow-x: hidden;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+button{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+input{
+    border: none;
+    outline: none;
+}
+*,::after,::before{
+    box-sizing: border-box;
+}
