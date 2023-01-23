@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/auth', function () {
-    return view('auth');
+Route::name('general.')->group(function (){
+Route::view('/home','home')->middleware('auth')->name('home');
+    Route::get('/auth', function () {
+        if(Auth::check()) {
+            return redirect(route('general.home'));
+        }
+
+        return view('auth');
+    })->name('auth');
+Route::post('/auth',[\App\Http\Controllers\AuthController::class,'login']);
+
+    Route::get('/logout',function (){
+        Auth::logout();
+        return redirect(route('general.home'));
+    })->name('logout');
+    Route::get('/register', function () {
+        if(Auth::check()) {
+            return redirect(route('general.home'));
+        }
+        return view('register');
+    })->name('register');
+    Route::post('/register',[App\Http\Controllers\RegisterController::class,'register']);
 });
-Route::get('/register', function () {
-    return view('register');
-});
+
+
+

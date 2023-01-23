@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -34,15 +35,17 @@
             <div class="modal-close" data-bs-dismiss="modal" style="cursor:pointer;">X</div>
             <div class="left-user">
                 <h4 class="modal-title w-100 fw-bold mt-5">Информация о пользователе nodewhore:</h4>
-                <p>Имя: nodewhore</p>
-                <p>E-mail: vladqqsj@bk.ru</p>
-                <p>Номер +79507771763</p>
-                <p>E-mail: vladqqsj@bk.ru</p>
-                <p>Дней с момента регистрации: 1</p>
-                <a href="" class="btn-modal modal-yes btn-center">Редактировать</a>
+                <p>Имя: {{Auth::user()->name}}</p>
+                <p>E-mail: {{Auth::user()->email}}</p>
+                <p>Номер: {{Auth::user()->number}}</p>
+                <p>Город: {{Auth::user()->city}}</p>
+                <p>Дата регистрации: {{Auth::user()->created_at->format('d-m-y')}}</p>
+                <a href="" class="btn btn-outline-primary w-50 text-white">Редактировать</a>
+                <br>
+                <a href="/logout" class="btn btn-outline-danger text-white w-50 mt-3">Выйти</a>
             </div>
             <div class="right-user">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="avatar"
+                <img src="{{Auth::user()->avatar}}" alt="avatar"
                      class="user-avatar">
                 <h4 class="">Ваши комнаты:</h4>
                 <a href="" class="btn-modal modal-yes w-100">Ул. Пешкова 18, г. Борисоглебск</a>
