@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -12,13 +11,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="jquery/dist/jquery.js"></script>
     <script src="/js/app.js"></script>
     <title>@yield('title')</title>
 </head>
 <body>
 <div id="app">
-
     @yield('content')
 </div>
 <div class="send-cookie" id="cookies" >
@@ -34,7 +33,8 @@
         <div class="modal-user w-100">
             <div class="modal-close" data-bs-dismiss="modal" style="cursor:pointer;">X</div>
             <div class="left-user">
-                <h4 class="modal-title w-100 fw-bold mt-5">Информация о пользователе nodewhore:</h4>
+                @if(isset(Auth::user()->id))
+                <h4 class="modal-title w-100 fw-bold mt-5">Ваш ID: {{Auth::user()->id}}</h4>
                 <p>Имя: {{Auth::user()->name}}</p>
                 <p>E-mail: {{Auth::user()->email}}</p>
                 <p>Номер: {{Auth::user()->number}}</p>
@@ -53,8 +53,16 @@
             </div>
         </div>
             </div>
+            @endif
     </div>
     </div>
+<div class="preloader" style="background: var(--currentBlack)">
+    <div class="spinner">
+        <div class="spinner-border text-danger" style="width:100px; height:100px;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
 </div>
 
 </body>

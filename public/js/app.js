@@ -10,10 +10,10 @@ $(function (){
     let inputCity = $('city').val();
     let storageCookie = localStorage.getItem('cookies');
     let checkBox = $('flexCheckChecked');
-
     let cookieAccept;
     let storageCookie1 = localStorage.cookies;
     let response;
+    $('.preloader').fadeOut();
     // formRegister.submit(function (e){
     //     e.preventDefault();
     //     $('.error').remove();

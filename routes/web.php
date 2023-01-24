@@ -15,8 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if(Auth::check()){
+       return redirect('home');
+    }
+    else{
     return view('welcome');
+    }
 });
+Route::get('rooms',function ()
+{
+    return view('rooms');
+});
+
 Route::name('general.')->group(function (){
 Route::view('/home','home')->middleware('auth')->name('home');
     Route::get('/auth', function () {
